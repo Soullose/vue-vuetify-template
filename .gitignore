@@ -21,6 +21,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 src/components/TestAggrid.vue
 /public
 .temp_cache
+=======
+>>>>>>> df6989c (init)
