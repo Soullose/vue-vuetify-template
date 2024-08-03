@@ -101,9 +101,13 @@
 <script>
 import { mapState } from 'vuex';
 export default {
-  name: '',
+  name: 'Layout',
+  mounted() {
+    console.log('menus:', this.$store.state.framework.menus);
+  },
   computed: {
     ...mapState(['theme']),
+    ...mapState('framework', ['menus']),
     toggleNavIcon() {
       return this.theme.asideMenuFolded ? 'mdi-menu' : 'mdi-menu-open';
     }

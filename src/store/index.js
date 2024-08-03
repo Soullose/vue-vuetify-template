@@ -1,3 +1,4 @@
+import framework from '@/framework/store';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -17,5 +18,5 @@ export default new Vuex.Store({
     }
   },
   actions: {},
-  modules: {}
+  modules: { framework }
 });
