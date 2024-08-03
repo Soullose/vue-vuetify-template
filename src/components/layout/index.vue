@@ -75,7 +75,7 @@
       </v-menu>
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon @click="$emit('search')" v-on="on" v-bind="attrs">
+          <v-btn icon @click="isScreenfull" v-on="on" v-bind="attrs">
             <v-icon>
               {{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}
             </v-icon>
@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import { toggle } from '@/plugins/fullScreen';
 import { mapState } from 'vuex';
 export default {
   name: 'Layout',
@@ -152,7 +153,7 @@ export default {
   },
   methods: {
     isScreenfull() {
-      this.screenfull = !this.screenfull;
+      toggle(this.$el);
     }
   }
 };
