@@ -13,12 +13,12 @@ module.exports = defineConfig({
   configureWebpack: {
     resolve: {
       alias: {
-        '@': __dirname + '/src',
-        '@assets': __dirname + '/src/assets',
-        '@components': __dirname + '/src/components',
-        '@defaultLayout': __dirname + '/src/layout/default',
-        '@homeLayout': __dirname + '/src/layout/home',
-        framework: path.join(__dirname, 'src', 'framework')
+        '@': path.join(__dirname, 'src'),
+        '@assets': path.join(__dirname, 'src', 'assets'),
+        '@components': path.join(__dirname, 'src', 'components'),
+        '@defaultLayout': path.join(__dirname, 'src', 'layout', 'default'),
+        '@homeLayout': path.join(__dirname, 'src', 'layout', 'home'),
+        '@framework': path.join(__dirname, 'src', 'framework')
       }
     },
     module: {
