@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { VuetifyLoaderPlugin } = require('vuetify-loader');
 // var webpack = require('webpack');
+const path = require('path');
 module.exports = defineConfig({
   transpileDependencies: ['vuetify'],
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
@@ -16,7 +17,8 @@ module.exports = defineConfig({
         '@assets': __dirname + '/src/assets',
         '@components': __dirname + '/src/components',
         '@defaultLayout': __dirname + '/src/layout/default',
-        '@homeLayout': __dirname + '/src/layout/home'
+        '@homeLayout': __dirname + '/src/layout/home',
+        framework: path.join(__dirname, 'src', 'framework')
       }
     },
     module: {
