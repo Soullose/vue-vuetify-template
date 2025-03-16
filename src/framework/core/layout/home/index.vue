@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar app elevation="1" color="primary" fixed flat dark src="https://picsum.photos/1920/1080?random">
-      <template v-slot:img="{ props }">
+    <v-app-bar app elevation="1" light fixed flat height="64">
+      <!-- <template v-slot:img="{ props }">
         <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"></v-img>
-      </template>
+      </template> -->
 
       <!-- <div class="d-flex align-center">
         <v-img
@@ -43,6 +43,14 @@
           />
         </div>
       </transition> -->
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
+            <v-icon>{{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
+          </v-btn>
+        </template>
+        <span>{{ screenfull ? '退出全屏' : '全屏' }}</span>
+      </v-tooltip>
 
       <v-menu offset-y left min-width="260" transition="slide-y-transition">
         <template v-slot:activator="{ on }">
@@ -82,41 +90,60 @@
         </v-card>
       </v-menu>
 
-      <v-menu transition="slide-y-transition">
+      <!-- <v-menu transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="transparent" class="ma-2 white--text" depressed v-bind="attrs" v-on="on">
+          <v-btn color="primary" class="ma-2 white--text" depressed v-bind="attrs" v-on="on">
             Login
             <v-icon right dark>mdi-login</v-icon>
           </v-btn>
         </template>
+      </v-menu> -->
+
+      <v-menu offset-y left bottom rounded transition="slide-y-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-on="on" v-bind="attrs">
+            <v-avatar light>
+              <v-icon dark>mdi-account-circle</v-icon>
+            </v-avatar>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-list dense class="pa-0">
+            <v-subheader>用户</v-subheader>
+            <v-divider />
+            <v-list-item>
+              <v-list-item-avatar></v-list-item-avatar>
+            </v-list-item>
+          </v-list>
+        </v-card>
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="showAsideMenu" app color="primary" fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
-      <v-img
+    <v-navigation-drawer app light fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
+      <!-- <v-img
         slot="img"
         src="https://picsum.photos/1920/1080?random"
         gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
         style="width: 100%; height: 100%"
         dark
-      />
+      /> -->
       <v-layout fill-height column>
-        <v-list class="py-1" two-line>
+        <v-list class="ml-2 py-0" two-line>
           <v-list-item class="px-0">
             <v-list-item-avatar class="my-2 mr-2">
               <v-img src="https://randomuser.me/api/portraits/lego/1.jpg" />
             </v-list-item-avatar>
             <v-list-item-content class="py-2">
               <v-list-item-title>
-                <label class="text-blank text-h6 font-weight-bold mr-2">
+                <label class="text-blank text-subtitle-1 font-weight-regular mr-2">
                   {{ software.name }}
                 </label>
                 <label class="text-caption black--text">
                   {{ software.version }}
                 </label>
               </v-list-item-title>
-              <v-list-item-subtitle class="d-inline-flex align-center">
-                <v-icon small left>mdi-account-tie</v-icon>
+              <v-list-item-subtitle class="d-inline-flex align-center font-weight-medium">
+                <v-icon small left>mdi-account</v-icon>
                 {{ user.firstName + user.lastName }}
               </v-list-item-subtitle>
             </v-list-item-content>
@@ -125,7 +152,7 @@
         <v-divider />
 
         <div class="grow overflow-y-auto" style="height: 0px">
-          <ac-aside-menu />
+          <!-- <ac-aside-menu /> -->
         </div>
 
         <v-card>
@@ -147,6 +174,8 @@
 </template>
 
 <script>
+import screenfull from 'screenfull';
+
 export default {
   name: 'HomeLayout',
   data: () => ({
@@ -167,20 +196,27 @@ export default {
     messages: [],
     selection: 1,
     software: {
-      name: 'Vuetify',
+      name: 'XXX管理系统',
       version: '2.6.1',
       company: 'Vuetify LLC'
     },
     user: {
       firstName: 'John',
       lastName: 'Doe'
-    }
+    },
+    screenfull: false
   }),
 
   methods: {
     toggleAsideMenuFolded() {
       this.asideMenuFolded = !this.asideMenuFolded;
       console.log('toggleAsideMenuFolded', this.asideMenuFolded);
+    },
+    onToggleScreenfull() {
+      if (screenfull.isEnabled) {
+        screenfull.toggle();
+        this.screenfull = !this.screenfull;
+      }
     }
   }
 };
