@@ -153,6 +153,26 @@
 
         <div class="grow overflow-y-auto" style="height: 0px">
           <!-- <ac-aside-menu /> -->
+          <v-list dense light nav>
+            <v-list-group active-class="primary--text" append-icon="mdi-chevron-down mdi-18px">
+              <template v-slot:prependIcon>
+                <v-icon>mdi-view-dashboard</v-icon>
+              </template>
+              <template v-slot:activator>
+                <v-list-item-title>
+                  <span class="text-subtitle-2">xxx</span>
+                </v-list-item-title>
+              </template>
+              <v-list-item dark active-class="primary--text" to="/home">
+                <v-list-item-icon class="justify-center">
+                  <v-icon dense>mdi-account-box</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>
+                  <span class="text-subtitle-2">测试1</span>
+                </v-list-item-title>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
         </div>
 
         <v-card>
