@@ -1,5 +1,5 @@
 <template>
-  <div class="divBox">
+  <div>
     <div>我是 "vue": "^2.6.14", "@ag-grid-community/vue": "^31.3",</div>
     <AgGridVue style="width: 100%; height: 1000px" :class="themeClass" :gridOptions="gridOptions"></AgGridVue>
   </div>
