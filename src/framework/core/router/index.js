@@ -15,9 +15,14 @@ const routes = [
     component: HomeLayout,
     children: [
       {
-        path: '/testAggrid',
+        // 当 /testAggrid 匹配成功，
+        // TestAggrid 会被渲染在 HomeLayout 的 <router-view> 中
+        path: 'testAggrid',
         name: 'testAggrid',
-        component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue'),
+        meta: {
+          title: 'testAggrid'
+        }
       }
     ]
   },
@@ -76,14 +81,40 @@ const router = new VueRouter({
   routes
 });
 
+/**
+ * 全局解析守卫
+ */
+router.beforeResolve((to, from, next) => {
+  // console.log('to', to);
+  // console.log('from', from);
+  next();
+});
+
+/**
+ * 全局前置守卫
+ * @param  to     即将要进入的目标 路由对象
+ * @param  from   当前导航正要离开的路由
+ * @param  next   一定要调用该方法来 resolve 这个钩子
+ */
 router.beforeEach((to, from, next) => {
   // console.log('to', to);
   // console.log('from', from);
   const routeExists = router.getRoutes().some((route) => route.path === to.path);
   if (!routeExists && to.name === undefined) {
     next(Error('错误'));
+  } else {
+    next();
   }
-  next();
+});
+
+/**
+ * 全局后置钩子
+ * @param  to     即将要进入的目标 路由对象
+ * @param  from   当前导航正要离开的路由
+
+ */
+router.afterEach((to, from) => {
+  // ...
 });
 
 export default router;
