@@ -1,48 +1,12 @@
 <template>
-  <v-app>
-    <v-app-bar app elevation="1" light fixed flat height="64">
-      <!-- <template v-slot:img="{ props }">
-        <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"></v-img>
-      </template> -->
-
-      <!-- <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-        <v-toolbar-title class="text-h4">Vuetify</v-toolbar-title>
-      </div> -->
-
+  <div class="fill-height d-flex">
+    <v-app-bar app elevation="1" light fixed flat extension-height="32" height="64">
       <v-app-bar-nav-icon @click="toggleAsideMenuFolded" />
 
       <v-btn text v-for="menu in menus" :key="menu.id" :to="{ path: menu.path }" link rounded plain active-class="active-menu">
         {{ menu.name }}
       </v-btn>
       <v-spacer></v-spacer>
-
-      <!-- <transition name="slide-fade" :mode="'out-in'">
-        <v-btn dense icon v-if="!showSearch" @click="showSearch = true">
-          <v-icon>mdi-home-search-outline</v-icon>
-        </v-btn>
-        <div class="w-md" v-else>
-          <v-text-field
-            autofocus
-            class="hidden-sm-and-down"
-            placeholder="搜索 ..."
-            hide-details
-            rounded
-            color="rgba(192, 192, 192, 1)"
-            background-color="rgba(192, 192, 192, 0.6)"
-            flat
-            prepend-inner-icon="mdi-home-search-outline"
-            @blur="showSearch = false"
-          />
-        </div>
-      </transition> -->
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
@@ -90,15 +54,6 @@
         </v-card>
       </v-menu>
 
-      <!-- <v-menu transition="slide-y-transition">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" class="ma-2 white--text" depressed v-bind="attrs" v-on="on">
-            Login
-            <v-icon right dark>mdi-login</v-icon>
-          </v-btn>
-        </template>
-      </v-menu> -->
-
       <v-menu offset-y left bottom rounded transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-on="on" v-bind="attrs">
@@ -119,14 +74,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer app absolute light fixed permanent width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
-      <!-- <v-img
-        slot="img"
-        src="https://picsum.photos/1920/1080?random"
-        gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
-        style="width: 100%; height: 100%"
-        dark
-      /> -->
+    <v-navigation-drawer app light fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
       <v-layout fill-height column>
         <v-list class="ml-2 py-0" two-line>
           <v-list-item class="px-0">
@@ -138,7 +86,7 @@
                 <label class="text-blank text-subtitle-1 font-weight-regular mr-2">
                   {{ software.name }}
                 </label>
-                <label class="text-caption black--text">
+                <label class="mr-3 text-caption black--text">
                   {{ software.version }}
                 </label>
               </v-list-item-title>
@@ -222,12 +170,12 @@
       <router-view />
     </v-main>
 
-    <v-footer inset app light style="height: 48px" class="align-center">
+    <v-footer inset app light elevation="12" style="height: 48px">
       <v-spacer />
       <span class="text-body-2 mr-2">版权所有</span>
       <span class="text-body-2">{{ software.company }}</span>
     </v-footer>
-  </v-app>
+  </div>
 </template>
 
 <script>
