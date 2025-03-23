@@ -1,9 +1,13 @@
 <template>
   <div class="fill-height d-flex">
-    <v-app-bar app elevation="1" light fixed flat extension-height="32" height="64">
+    <v-app-bar app elevation="4" light fixed flat extension-height="32" height="32">
+      <template v-slot:img="{ props }">
+        <!-- <v-img v-bind="props" gradient="135deg, rgba(18, 52, 126, 0.6) 60%, rgba(255, 0, 0, 0.3)" /> -->
+        <v-img v-bind="props" />
+      </template>
       <v-app-bar-nav-icon @click="toggleAsideMenuFolded" />
 
-      <v-btn text v-for="menu in menus" :key="menu.id" :to="{ path: menu.path }" link rounded plain active-class="active-menu">
+      <v-btn text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
         {{ menu.name }}
       </v-btn>
       <v-spacer></v-spacer>
@@ -72,6 +76,17 @@
           </v-list>
         </v-card>
       </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs height="30" optional background-color="transparent" class="mx-4" active-class="active-bookmark">
+          <v-tabs-slider color="primary"></v-tabs-slider>
+          <v-tab v-for="(bookmark, index) in bookmarks" :key="'bookmark_' + index" :to="{ path: bookmark.fullPath }">
+            {{ bookmark.text }}
+            <v-icon right small :disabled="bookmarks.length === 1">mdi-bookmark-remove</v-icon>
+          </v-tab>
+        </v-tabs>
+        <!-- <div class="grow mx-n4 px-4 pa-4"></div> -->
+      </template>
     </v-app-bar>
 
     <v-navigation-drawer app light fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
@@ -209,7 +224,19 @@ export default {
       firstName: 'John',
       lastName: 'Doe'
     },
-    screenfull: false
+    screenfull: false,
+    bookmarks: [
+      {
+        id: 1,
+        text: 'Home',
+        fullPath: '/'
+      },
+      {
+        id: 2,
+        text: 'About',
+        fullPath: '/about'
+      }
+    ]
   }),
 
   methods: {
