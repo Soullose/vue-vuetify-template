@@ -4,7 +4,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { VuetifyLoaderPlugin } = require('vuetify-loader');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 // const threadLoader = require('thread-loader');
 // var webpack = require('webpack');
 const path = require('path');
@@ -45,7 +46,7 @@ module.exports = defineConfig(async () => {
     transpileDependencies: ['vuetify', 'unocss'],
     // transpileDependencies: ['vuetify'],
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
-    productionSourceMap: true,
+    productionSourceMap: false,
     configureWebpack: {
       devtool: 'inline-source-map',
       resolve: {
@@ -141,7 +142,8 @@ module.exports = defineConfig(async () => {
         new VuetifyLoaderPlugin(),
         UnoCSS({}),
         // 打包体积分析
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin(),
+        new SpeedMeasurePlugin()
       ],
       optimization: {
         minimize: true,
@@ -156,7 +158,9 @@ module.exports = defineConfig(async () => {
                 ecma: 5,
                 warnings: false,
                 comparisons: false,
-                inline: 2
+                inline: 2,
+                drop_console: true,
+                drop_debugger: true
               },
               mangle: {
                 safari10: true
@@ -204,6 +208,7 @@ module.exports = defineConfig(async () => {
       host: '0.0.0.0',
       port: 3000,
       open: true,
+      compress: true,
       hot: true
     }
   };
