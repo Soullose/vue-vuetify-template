@@ -1,4 +1,4 @@
-// import 'uno.css';
+import 'uno.css';
 import Vue from 'vue';
 import '../components';
 import App from './App.vue';
