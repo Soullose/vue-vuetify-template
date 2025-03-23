@@ -47,9 +47,11 @@
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
+    "thread-loader": "^4.0.4",
     "unocss": "^0.62.4",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.7.16",
-    "vuetify-loader": "^1.9.2"
+    "vuetify-loader": "^1.9.2",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
