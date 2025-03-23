@@ -7,9 +7,10 @@ const { VuetifyLoaderPlugin } = require('vuetify-loader');
 // var webpack = require('webpack');
 const path = require('path');
 module.exports = defineConfig(async () => {
-  const { default: UnoCSS } = await import('@unocss/webpack');
+  // const { default: UnoCSS } = await import('@unocss/webpack');
   return {
-    transpileDependencies: ['vuetify', 'unocss'],
+    // transpileDependencies: ['vuetify', 'unocss'],
+    transpileDependencies: ['vuetify'],
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     productionSourceMap: true,
     configureWebpack: {
@@ -65,8 +66,8 @@ module.exports = defineConfig(async () => {
           // filename: 'css/[name].[contenthash].css'
         }),
         new LodashModuleReplacementPlugin(),
-        new VuetifyLoaderPlugin(),
-        UnoCSS({})
+        new VuetifyLoaderPlugin()
+        // UnoCSS({})
       ],
       optimization: {
         minimize: true,
@@ -79,10 +80,10 @@ module.exports = defineConfig(async () => {
       }
     },
     chainWebpack(config) {
-      config.module.rule('vue').uses.delete('cache-loader');
-      config.merge({
-        cache: false
-      });
+      // config.module.rule('vue').uses.delete('cache-loader');
+      // config.merge({
+      //   cache: false
+      // });
     },
     css: {
       extract:
