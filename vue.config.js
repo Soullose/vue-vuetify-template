@@ -10,7 +10,6 @@ module.exports = defineConfig(async () => {
   const { default: UnoCSS } = await import('@unocss/webpack');
   return {
     transpileDependencies: ['vuetify', 'unocss'],
-    // transpileDependencies: true,
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     productionSourceMap: true,
     configureWebpack: {
