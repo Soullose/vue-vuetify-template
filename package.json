@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.21.0",
     "@babel/types": "^7.21.0",
     "@mdi/js": "^7.4.47",
-    "@unocss/webpack": "^0.59.0",
+    "@unocss/webpack": "^0.62.4",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
@@ -47,7 +47,7 @@
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "unocss": "^0.59.0",
+    "unocss": "^0.62.4",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.7.16",
     "vuetify-loader": "^1.9.2"
