@@ -119,7 +119,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer app light fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
+    <v-navigation-drawer app absolute light fixed permanent width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
       <!-- <v-img
         slot="img"
         src="https://picsum.photos/1920/1080?random"
@@ -168,7 +168,7 @@
                 <v-icon dense>mdi-account-box</v-icon>
               </v-list-item-icon>
               <v-list-item-title>
-                <span class="text-subtitle-2">测试22</span>
+                <span class="text-subtitle-2 bg-red">测试22</span>
               </v-list-item-title>
             </v-list-item>
 

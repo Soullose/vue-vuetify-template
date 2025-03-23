@@ -10,6 +10,19 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
+    redirect: '/home',
+    name: 'home',
+    component: HomeLayout,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: HomeView
+      }
+    ]
+  },
+  {
+    path: '/',
     redirect: '/testAggrid',
     name: 'home',
     component: HomeLayout,
@@ -23,19 +36,6 @@ const routes = [
         meta: {
           title: 'testAggrid'
         }
-      }
-    ]
-  },
-  {
-    path: '/',
-    redirect: '/home',
-    name: 'home',
-    component: HomeLayout,
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: HomeView
       }
     ]
   },
