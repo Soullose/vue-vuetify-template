@@ -131,7 +131,7 @@ module.exports = defineConfig(async () => {
       plugins: [
         new CompressionPlugin({
           algorithm: 'gzip',
-          threshold: 8192,
+          threshold: 10240,
           filename: '[path][base].gz[query]'
         }),
         new MiniCssExtractPlugin({
