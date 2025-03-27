@@ -2,10 +2,13 @@ import * as mdicons from '@mdi/js';
 import vue from '@vitejs/plugin-vue2';
 // import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { fileURLToPath, URL } from 'node:url';
+import postcssPresetEnv from 'postcss-preset-env';
 import regexpPlugin from 'rollup-plugin-regexp';
+import AutoImport from 'unplugin-auto-import/vite';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
+import { compression } from 'vite-plugin-compression2';
 
 const mdi = {};
 Object.keys(mdicons).forEach((key) => {
@@ -21,7 +24,7 @@ Object.keys(mdicons).forEach((key) => {
 export default defineConfig({
   plugins: [
     regexpPlugin({
-      exclude: ['node_modules/**'],
+      exclude: ['node_modules/**', 'node_modules/@mdi\/js\/.+', 'node_modules\/vuetify\/.+'],
       find: /\b(?<![/\w])(mdi-[\w-]+)\b(?!\.)/,
       replace: (match) => {
         if (mdi[match]) {
@@ -44,24 +47,123 @@ export default defineConfig({
         // Vuetify
         VuetifyResolver()
       ]
+    }),
+    postcssPresetEnv(),
+    compression(),
+    AutoImport({
+      // targets to transform
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.vue\.[tj]sx?\?vue/, // .vue (vue-loader with experimentalInlineMatchResource enabled)
+        /\.md$/ // .md
+      ],
+      // global imports to register
+      imports: [
+        // presets
+        'vue',
+        'vue-router',
+        // custom
+        {
+          '@vueuse/core': [
+            // named imports
+            'useMouse', // import { useMouse } from '@vueuse/core',
+            // alias
+            ['useFetch', 'useMyFetch'] // import { useFetch as useMyFetch } from '@vueuse/core',
+          ],
+          axios: [
+            // default imports
+            ['default', 'axios'] // import { default as axios } from 'axios',
+          ]
+        },
+        // example type import
+        {
+          from: 'vue-router',
+          imports: ['RouteLocationRaw'],
+          type: true
+        }
+      ],
+      // Array of strings of regexes that contains imports meant to be filtered out.
+      ignore: ['useMouse', 'useFetch'],
+      // Enable auto import by filename for default module exports under directories
+      defaultExportByFilename: false,
+
+      // Options for scanning directories for auto import
+      dirsScanOptions: {
+        types: true // Enable auto import the types under the directories
+      },
+      // Auto import for module exports under directories
+      // by default it only scan one level of modules under the directory
+      dirs: [
+        './hooks',
+        './composables', // only root modules
+        './composables/**', // all nested modules
+        // ...
+        {
+          glob: './hooks',
+          types: true // enable import the types
+        },
+        {
+          glob: './composables',
+          types: false // If top level dirsScanOptions.types importing enabled, just only disable this directory
+        }
+        // ...
+      ],
+      // Filepath to generate corresponding .d.ts file.
+      // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
+      // Set `false` to disable.
+      dts: './auto-imports.d.ts',
+      // Array of strings of regexes that contains imports meant to be ignored during
+      // the declaration file generation. You may find this useful when you need to provide
+      // a custom signature for a function.
+      ignoreDts: ['ignoredFunction', /^ignore_/],
+      // Auto import inside Vue template
+      // see https://github.com/unjs/unimport/pull/15 and https://github.com/unjs/unimport/pull/72
+      vueTemplate: true,
+
+      // Auto import directives inside Vue template
+      // see https://github.com/unjs/unimport/pull/374
+      vueDirectives: undefined,
+
+      // Custom resolvers, compatible with `unplugin-vue-components`
+      // see https://github.com/antfu/unplugin-auto-import/pull/23/
+      resolvers: [
+        /* ... */
+      ],
+      // Include auto-imported packages in Vite's `optimizeDeps` options
+      // Recommend to enable
+      viteOptimizeDeps: true,
+      // Inject the imports at the end of other imports
+      injectAtEnd: true,
+      // Generate corresponding .eslintrc-auto-import.json file.
+      // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
+      eslintrc: {
+        enabled: true, // Default `false`
+        // provide path ending with `.mjs` or `.cjs` to generate the file with the respective format
+        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      },
+      // Save unimport items into a JSON file for other tools to consume
+      dumpUnimportItems: './auto-imports.json' // Default `false`
     })
   ],
-  // loader: {
-  //   '.js': 'js',
-  //   '.js': 'jsx',
-  //   '.js': 'tsx', // 默认是 .js:js
-  //   '.ts': 'tsx', // 默认是 .ts:ts
-  //   '.tsx': 'tsx', // 默认就支持
-  //   '.jsx': 'jsx' // 默认就支持
-  // },
-  esbuild: {
-    // loader: {
-    //   '.js': 'jsx',
-    //   '.js': 'tsx', // 默认是 .js:js
-    //   '.ts': 'tsx', // 默认是 .ts:ts
-    //   '.tsx': 'tsx', // 默认就支持
-    //   '.jsx': 'jsx' // 默认就支持
-    // }
+  css: {
+    devSourcemap: true,
+    preprocessorMaxWorkers: true,
+    // https://vitejs.dev/config/#css-preprocessoroptions
+    preprocessorOptions: {
+      sass: {
+        // additionalData: [
+        //   // vuetify variable overrides
+        //   '@import "@/assets/styles/vuetify-variables.scss"',
+        //   ''
+        // ].join('\n')
+      }
+    },
+    postcss: {
+      plugins: [postcssPresetEnv({ stage: 3 })]
+    }
   },
   resolve: {
     alias: {
