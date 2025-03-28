@@ -1,5 +1,7 @@
 import * as mdicons from '@mdi/js';
+import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue2';
+import { resolve } from 'node:path';
 // import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { fileURLToPath, URL } from 'node:url';
 import postcssPresetEnv from 'postcss-preset-env';
@@ -9,6 +11,9 @@ import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import { compression } from 'vite-plugin-compression2';
+import Inspect from 'vite-plugin-inspect';
+import Pages from 'vite-plugin-pages';
+import Layouts from 'vite-plugin-vue-layouts';
 
 const mdi = {};
 Object.keys(mdicons).forEach((key) => {
@@ -23,6 +28,46 @@ Object.keys(mdicons).forEach((key) => {
 
 export default defineConfig({
   plugins: [
+    vue({
+      include: [/\.vue$/, /\.md$/]
+    }),
+    Pages({
+      dirs: [
+        // issue #68
+        { dir: resolve(__dirname, './src/views'), baseRoute: '' },
+        // 案例
+        { dir: 'src/features/**/pages', baseRoute: 'features' },
+        { dir: 'src/admin/pages', baseRoute: 'admin' }
+      ],
+      extensions: ['vue', 'md', 'jsx'],
+      extendRoute(route: any) {
+        if (route.name === 'about') route.props = (route: any) => ({ query: route.query.q });
+
+        if (route.name === 'components') {
+          return {
+            ...route,
+            beforeEnter: (route: any) => {
+              console.log(route);
+            }
+          };
+        }
+      }
+    }),
+    Layouts({ layoutsDirs: 'src/framework/core/layout/home', defaultLayout: 'index' }),
+    legacy(),
+    Inspect(),
+    compression(),
+    Components({
+      // generate `components.d.ts` global declarations
+      dts: true,
+      // auto import for directives
+      directives: true,
+      // resolvers for custom components
+      resolvers: [
+        // Vuetify
+        VuetifyResolver()
+      ]
+    }),
     regexpPlugin({
       exclude: ['node_modules/**', 'node_modules/@mdi\/js\/.+', 'node_modules\/vuetify\/.+'],
       find: /\b(?<![/\w])(mdi-[\w-]+)\b(?!\.)/,
@@ -36,20 +81,6 @@ export default defineConfig({
       },
       sourcemap: false
     }),
-    vue(),
-    Components({
-      // generate `components.d.ts` global declarations
-      dts: true,
-      // auto import for directives
-      directives: true,
-      // resolvers for custom components
-      resolvers: [
-        // Vuetify
-        VuetifyResolver()
-      ]
-    }),
-    postcssPresetEnv(),
-    compression(),
     AutoImport({
       // targets to transform
       include: [
