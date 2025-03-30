@@ -97,6 +97,13 @@
     "Home": true,
     "default": true,
     "default ": true,
-    "HomeView": true
+    "HomeView": true,
+    "index": true,
+    "home": true,
+    "homeLayout": true,
+    "HelloWorld": true,
+    "TestAggrid": true,
+    "AsideMenu": true,
+    "Header": true
   }
 }

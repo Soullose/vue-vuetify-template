@@ -6,9 +6,12 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const AsideMenu: typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']
   const EffectScope: typeof import('vue')['EffectScope']
-  const HomeLayout: typeof import('@/framework/core/layout/home')['HomeLayout']
-  const HomeView: typeof import('@/views/HomeView.vue')['default']
+  const Header: typeof import('./src/framework/core/layout/home/Header.vue')['default']
+  const HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+  const HomeView: typeof import('./src/views/HomeView.vue')['default']
+  const TestAggrid: typeof import('./src/components/TestAggrid.vue')['default']
   const [alias]: (typeof import('[package-name]'))['[from]']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const axios: typeof import('axios')['default']
@@ -24,6 +27,7 @@ declare global {
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
+  const home: typeof import('./src/framework/core/layout/home/index.vue')['default']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
@@ -90,6 +94,9 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { RouteLocationRaw } from 'vue-router'
+  import('vue-router')
 }
 
 // for vue template auto import
@@ -97,10 +104,12 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
+    readonly AsideMenu: UnwrapRef<typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly HomeLayout: UnwrapRef<typeof import('@/framework/core/layout/home')['HomeLayout']>
-    readonly HomeView: UnwrapRef<typeof import('@/views/HomeView.vue')['HomeView']>
-    readonly HomeView: UnwrapRef<typeof import('@/views/HomeView.vue')['default']>
+    readonly Header: UnwrapRef<typeof import('./src/framework/core/layout/home/Header.vue')['default']>
+    readonly HelloWorld: UnwrapRef<typeof import('./src/components/HelloWorld.vue')['default']>
+    readonly HomeView: UnwrapRef<typeof import('./src/views/HomeView.vue')['default']>
+    readonly TestAggrid: UnwrapRef<typeof import('./src/components/TestAggrid.vue')['default']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly axios: UnwrapRef<typeof import('axios')['default']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -115,6 +124,7 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly home: UnwrapRef<typeof import('./src/framework/core/layout/home/index.vue')['default']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
