@@ -7,6 +7,8 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const HomeLayout: typeof import('@/framework/core/layout/home')['HomeLayout']
+  const HomeView: typeof import('@/views/HomeView.vue')['default']
   const [alias]: (typeof import('[package-name]'))['[from]']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const axios: typeof import('axios')['default']
@@ -88,9 +90,6 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
-  // @ts-ignore
-  export type { RouteLocationRaw } from 'vue-router'
-  import('vue-router')
 }
 
 // for vue template auto import
@@ -99,6 +98,9 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly HomeLayout: UnwrapRef<typeof import('@/framework/core/layout/home')['HomeLayout']>
+    readonly HomeView: UnwrapRef<typeof import('@/views/HomeView.vue')['HomeView']>
+    readonly HomeView: UnwrapRef<typeof import('@/views/HomeView.vue')['default']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly axios: UnwrapRef<typeof import('axios')['default']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>

@@ -459,9 +459,18 @@
     "as": "axios"
   },
   {
-    "from": "vue-router",
-    "type": true,
-    "name": "RouteLocationRaw",
-    "as": "RouteLocationRaw"
+    "from": "@/framework/core/layout/home",
+    "name": "HomeLayout",
+    "as": "HomeLayout"
+  },
+  {
+    "from": "@/views/HomeView.vue",
+    "name": "HomeView",
+    "as": "HomeView"
+  },
+  {
+    "from": "@/views/HomeView.vue",
+    "name": "default",
+    "as": "HomeView"
   }
 ]
