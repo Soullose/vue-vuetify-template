@@ -194,10 +194,14 @@
 </template>
 
 <script>
+import { theme } from '@/framework/core/store/theme';
 import screenfull from 'screenfull';
-
 export default {
   name: 'HomeLayout',
+  created() {
+    theme().setTheme('dark');
+    console.log(theme().theme);
+  },
   data: () => ({
     asideMenuFolded: false,
     menus: [
@@ -240,6 +244,7 @@ export default {
   }),
 
   methods: {
+    ...mapActions('theme', ['getAsideMenuFolded', 'setAsideMenuFolded']),
     toggleAsideMenuFolded() {
       this.asideMenuFolded = !this.asideMenuFolded;
       console.log('toggleAsideMenuFolded', this.asideMenuFolded);
