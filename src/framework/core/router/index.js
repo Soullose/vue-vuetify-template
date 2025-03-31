@@ -75,7 +75,7 @@ Vue.use(VueRouter);
 const root = {
   path: '/',
   redirect: '/home',
-  name: 'all',
+  name: '/',
   component: home,
   children: [
     {
@@ -89,7 +89,7 @@ const root = {
 const titlePrefix = 'W2-';
 
 // const root = { name: '/', path: '/', redirect: '/home', prop: true };
-// generatedRoutes.push(root);
+generatedRoutes.push(root);
 export const routes = setupLayouts(generatedRoutes);
 console.log('routes:', routes);
 console.log('generatedRoutes:', generatedRoutes);

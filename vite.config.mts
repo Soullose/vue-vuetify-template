@@ -41,12 +41,16 @@ export default defineConfig({
       exclude: ['**/components.{ts,tsx}'],
       extensions: ['vue', 'md', 'jsx'],
       extendRoute(route: any) {
-        console.log('route:', route);
+        console.log('route-:', route);
         if (route.path === '/') {
           return {
             ...route,
             redirect: '/home'
           };
+        }
+        // 404页面不加权限
+        if (route.name == 'all') {
+          return route;
         }
         if (route.name === 'about') route.props = (route: any) => ({ query: route.query.q });
 
@@ -226,7 +230,7 @@ export default defineConfig({
     hmr: true,
     /// 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
     strictPort: false
-    // open: '/'
+    // open: '/home'
   },
   /// 构建选项
   build: {
