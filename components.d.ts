@@ -44,9 +44,11 @@ declare module 'vue' {
     VRow: typeof import('vuetify/lib')['VRow']
     VSpacer: typeof import('vuetify/lib')['VSpacer']
     VSubheader: typeof import('vuetify/lib')['VSubheader']
+    VSwitch: typeof import('vuetify/lib')['VSwitch']
     VTab: typeof import('vuetify/lib')['VTab']
     VTabs: typeof import('vuetify/lib')['VTabs']
     VTabsSlider: typeof import('vuetify/lib')['VTabsSlider']
+    VToolbar: typeof import('vuetify/lib')['VToolbar']
     VTooltip: typeof import('vuetify/lib')['VTooltip']
   }
 }
