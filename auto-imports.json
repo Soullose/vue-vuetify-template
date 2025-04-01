@@ -490,6 +490,12 @@
   },
   {
     "name": "default",
+    "as": "BookMark",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/BookMark.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
     "as": "Header",
     "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/Header.vue",
     "__source": "dir"

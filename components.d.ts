@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AsideMenu: typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']
+    BookMark: typeof import('./src/framework/core/layout/home/BookMark.vue')['default']
     Default: typeof import('./src/framework/core/layout/default/index.vue')['default']
     Header: typeof import('./src/framework/core/layout/home/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -20,6 +21,7 @@ declare module 'vue' {
     VApp: typeof import('vuetify/lib')['VApp']
     VAppBar: typeof import('vuetify/lib')['VAppBar']
     VAppBarNavIcon: typeof import('vuetify/lib')['VAppBarNavIcon']
+    VApplication: typeof import('vuetify/lib')['VApplication']
     VAvatar: typeof import('vuetify/lib')['VAvatar']
     VBadge: typeof import('vuetify/lib')['VBadge']
     VBtn: typeof import('vuetify/lib')['VBtn']
@@ -51,8 +53,10 @@ declare module 'vue' {
     VTab: typeof import('vuetify/lib')['VTab']
     VTabItem: typeof import('vuetify/lib')['VTabItem']
     VTabs: typeof import('vuetify/lib')['VTabs']
+    VTabsItems: typeof import('vuetify/lib')['VTabsItems']
     VTabsSlider: typeof import('vuetify/lib')['VTabsSlider']
     VToolbar: typeof import('vuetify/lib')['VToolbar']
+    VToolBar: typeof import('vuetify/lib')['VToolBar']
     VTooltip: typeof import('vuetify/lib')['VTooltip']
   }
 }
