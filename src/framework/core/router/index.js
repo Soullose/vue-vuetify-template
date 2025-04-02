@@ -74,22 +74,22 @@ Vue.use(VueRouter);
 
 const root = {
   path: '/',
-  redirect: '/home',
-  name: '/',
-  component: home,
-  children: [
-    {
-      path: '/home',
-      name: 'home',
-      component: HomeView
-    }
-  ]
+  redirect: '/dashboard',
+  name: '/'
+  // component: home,
+  // children: [
+  //   {
+  //     path: '/home',
+  //     name: 'home',
+  //     component: HomeView
+  //   }
+  // ]
 };
 /// 标题前缀
 const titlePrefix = 'W2-';
 
 // const root = { name: '/', path: '/', redirect: '/home', prop: true };
-generatedRoutes.push(root);
+generatedRoutes.unshift(root);
 export const routes = setupLayouts(generatedRoutes);
 console.log('routes:', routes);
 console.log('generatedRoutes:', generatedRoutes);

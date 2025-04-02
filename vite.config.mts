@@ -42,12 +42,12 @@ export default defineConfig({
       extensions: ['vue', 'md', 'jsx'],
       extendRoute(route: any) {
         console.log('route-:', route);
-        if (route.path === '/') {
-          return {
-            ...route,
-            redirect: '/home'
-          };
-        }
+        // if (route.path === '/') {
+        //   return {
+        //     ...route,
+        //     redirect: '/home'
+        //   };
+        // }
         // 404页面不加权限
         if (route.name == 'all') {
           return route;
