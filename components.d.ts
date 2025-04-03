@@ -11,6 +11,7 @@ declare module 'vue' {
     AsideMenu: typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']
     BookMark: typeof import('./src/framework/core/layout/home/BookMark.vue')['default']
     Default: typeof import('./src/framework/core/layout/default/index.vue')['default']
+    Footer: typeof import('./src/framework/core/layout/home/Footer.vue')['default']
     Header: typeof import('./src/framework/core/layout/home/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Home: typeof import('./src/framework/core/layout/home/index.vue')['default']
