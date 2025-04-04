@@ -1,12 +1,11 @@
 <template>
-  <v-app-bar app absolute elevation="4" fixed flat extension-height="32" height="32">
-    <template v-slot:img="{ props }">
-      <!-- <v-img v-bind="props" gradient="135deg, rgba(18, 52, 126, 0.6) 60%, rgba(255, 0, 0, 0.3)" /> -->
-      <v-img v-bind="props" />
-    </template>
-    <v-app-bar-nav-icon @click="toggleAsideMenuFolded" />
+  <v-app-bar color="#1576F7" app absolute elevation="4" fixed flat extension-height="32" height="32">
+    <!-- <template v-slot:img="{ props }">
+      <v-img v-bind="props" gradient="135deg, rgba(29, 125, 234, 100) 100%, rgba(21, 118, 247, 100)" />
+    </template> -->
+    <v-app-bar-nav-icon color="#f5f5f5" @click="toggleAsideMenuFolded" />
 
-    <v-btn text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
+    <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
       {{ menu.name }}
     </v-btn>
     <v-spacer></v-spacer>
@@ -14,7 +13,7 @@
     <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
-          <v-icon>{{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
+          <v-icon color="#f5f5f5">{{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
         </v-btn>
       </template>
       <span>{{ screenfull ? '退出全屏' : '全屏' }}</span>
@@ -23,8 +22,8 @@
     <v-menu offset-y left min-width="260" transition="slide-y-transition">
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon v-on="on" v-bind="attrs">
-          <v-badge color="red" overlap dot bordered :content="messages.length">
-            <v-icon>mdi-email-outline</v-icon>
+          <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+            <v-icon color="#f5f5f5">mdi-email-outline</v-icon>
           </v-badge>
         </v-btn>
       </template>
@@ -41,8 +40,8 @@
     <v-menu offset-y left min-width="260" transition="slide-y-transition">
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
-          <v-badge color="red" light overlap dot bordered :content="messages.length">
-            <v-icon>mdi-bell-outline</v-icon>
+          <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+            <v-icon color="#f5f5f5">mdi-bell-outline</v-icon>
           </v-badge>
         </v-btn>
       </template>
@@ -61,7 +60,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn icon v-on="on" v-bind="attrs">
           <v-avatar light>
-            <v-icon>mdi-account-circle</v-icon>
+            <v-icon color="#f5f5f5">mdi-account-circle</v-icon>
           </v-avatar>
         </v-btn>
       </template>
@@ -304,3 +303,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+$app-bar-border-radius: 8 !default;
+</style>
