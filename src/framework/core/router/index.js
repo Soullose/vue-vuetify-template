@@ -116,6 +116,8 @@ router.beforeEach((to, from, next) => {
   const routeExists = router.getRoutes().some((route) => route.path === to.path);
   if (!routeExists && to.name === undefined) {
     next(Error('错误'));
+  } else if (!routeExists && to.name === 'all') {
+    next();
   } else {
     next();
   }
