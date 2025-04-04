@@ -225,19 +225,19 @@ export default {
 
     // 打开新标签页
     openNewTab(tab) {
-      if (!this.tabs.some((t) => t.id === tab.id)) {
-        this.tabs.push(tab);
+      if (!this.bookmarks.some((t) => t.id === tab.id)) {
+        this.bookmarks.push(tab);
       }
       this.activeTab = tab.id;
     },
 
     // 关闭标签页
     closeTab(tab) {
-      const index = this.tabs.findIndex((t) => t.id === tab.id);
+      const index = this.bookmarks.findIndex((t) => t.id === tab.id);
       if (index !== -1) {
-        this.tabs.splice(index, 1);
+        this.bookmarks.splice(index, 1);
         if (this.activeTab === tab.id) {
-          this.activeTab = this.tabs[Math.max(0, index - 1)]?.id || null;
+          this.activeTab = this.bookmarks[Math.max(0, index - 1)]?.id || null;
         }
       }
     },
@@ -268,8 +268,8 @@ export default {
     refreshTab() {
       if (this.currentContextTab) {
         const tab = { ...this.currentContextTab, timestamp: Date.now() };
-        const index = this.tabs.findIndex((t) => t.id === tab.id);
-        this.tabs.splice(index, 1, tab);
+        const index = this.bookmarks.findIndex((t) => t.id === tab.id);
+        this.bookmarks.splice(index, 1, tab);
         this.activeTab = tab.id;
       }
     },
@@ -277,7 +277,7 @@ export default {
     // 关闭其他标签页
     closeOtherTabs() {
       if (this.currentContextTab) {
-        this.tabs = this.tabs.filter((tab) => tab.id === this.currentContextTab.id || tab.pinned);
+        this.bookmarks = this.bookmarks.filter((tab) => tab.id === this.currentContextTab.id || tab.pinned);
         this.activeTab = this.currentContextTab.id;
       }
     },
@@ -285,15 +285,15 @@ export default {
     // 关闭右侧标签页
     closeRightTabs() {
       if (this.currentContextTab) {
-        const index = this.tabs.findIndex((t) => t.id === this.currentContextTab.id);
-        this.tabs = this.tabs.filter((tab, i) => i <= index || tab.pinned);
+        const index = this.bookmarks.findIndex((t) => t.id === this.currentContextTab.id);
+        this.bookmarks = this.bookmarks.filter((tab, i) => i <= index || tab.pinned);
       }
     },
 
     // 关闭所有标签页
     closeAllTabs() {
-      this.tabs = this.tabs.filter((tab) => tab.pinned);
-      this.activeTab = this.tabs[0]?.id || null;
+      this.bookmarks = this.bookmarks.filter((tab) => tab.pinned);
+      this.activeTab = this.bookmarks[0]?.id || null;
     },
 
     // 固定/取消固定标签页
