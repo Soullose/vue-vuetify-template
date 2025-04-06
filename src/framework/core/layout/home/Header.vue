@@ -1,135 +1,137 @@
 <template>
-  <v-app-bar color="#1576F7" app absolute elevation="4" fixed flat extension-height="32" height="32">
-    <!-- <template v-slot:img="{ props }">
+  <div bg-light-primary color-light-primary>
+    <v-app-bar color="primary" app absolute elevation="4" fixed flat extension-height="32" height="32">
+      <!-- <template v-slot:img="{ props }">
       <v-img v-bind="props" gradient="135deg, rgba(29, 125, 234, 100) 100%, rgba(21, 118, 247, 100)" />
     </template> -->
-    <v-app-bar-nav-icon color="#f5f5f5" @click="toggleAsideMenuFolded" />
+      <v-app-bar-nav-icon color="#f5f5f5" @click="toggleAsideMenuFolded" />
 
-    <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
-      {{ menu.name }}
-    </v-btn>
-    <v-spacer></v-spacer>
+      <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
+        {{ menu.name }}
+      </v-btn>
+      <v-spacer></v-spacer>
 
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
-          <v-icon color="#f5f5f5">{{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
-        </v-btn>
-      </template>
-      <span>{{ screenfull ? '退出全屏' : '全屏' }}</span>
-    </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
+            <v-icon color="#f5f5f5">{{ screenfull ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
+          </v-btn>
+        </template>
+        <span>{{ screenfull ? '退出全屏' : '全屏' }}</span>
+      </v-tooltip>
 
-    <v-menu offset-y left min-width="260" transition="slide-y-transition">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn icon v-on="on" v-bind="attrs">
-          <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
-            <v-icon color="#f5f5f5">mdi-email-outline</v-icon>
-          </v-badge>
-        </v-btn>
-      </template>
-      <v-card>
-        <v-list dense class="pa-0">
-          <v-subheader>消息中心</v-subheader>
-          <v-divider />
-          <v-list-item>
-            <v-list-item-avatar></v-list-item-avatar>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-menu>
-    <v-menu offset-y left min-width="260" transition="slide-y-transition">
-      <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on">
-          <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
-            <v-icon color="#f5f5f5">mdi-bell-outline</v-icon>
-          </v-badge>
-        </v-btn>
-      </template>
-      <v-card>
-        <v-list dense class="pa-0">
-          <v-subheader>系统通知</v-subheader>
-          <v-divider />
-          <v-list-item>
-            <v-list-item-avatar></v-list-item-avatar>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-menu>
-
-    <v-menu offset-y left bottom rounded transition="slide-y-transition">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn icon v-on="on" v-bind="attrs">
-          <v-avatar light>
-            <v-icon color="#f5f5f5">mdi-account-circle</v-icon>
-          </v-avatar>
-        </v-btn>
-      </template>
-      <v-card>
-        <v-list dense class="pa-0">
-          <v-subheader>用户</v-subheader>
-          <v-divider />
-          <v-list-item>
-            <v-list-item-avatar></v-list-item-avatar>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-menu>
-
-    <template v-slot:extension>
-      <v-tabs show-arrows height="30" class="mx-1" optional prev-icon="mdi-cog">
-        <v-tabs-slider></v-tabs-slider>
-        <v-tab
-          append
-          tag="span"
-          active-class="blue-grey lighten-4"
-          v-for="(bookmark, index) in bookmarks"
-          :key="'bookmark_' + index"
-          :to="{ path: bookmark.fullPath }"
-          @contextmenu.prevent="openContextMenu($event)"
-        >
-          {{ bookmark.text }}
-          <v-icon right small :disabled="bookmark.length === 1">mdi-close-box</v-icon>
-        </v-tab>
-      </v-tabs>
-
-      <!-- 右键菜单 -->
-      <v-menu v-model="showContextMenu" :position-x="menuX" :position-y="menuY" absolute offset-y content-class="chrome-context-menu">
-        <v-list dense>
-          <v-list-item @click="refreshTab">
-            <v-list-item-title>
-              <v-icon small class="mr-2">mdi-refresh</v-icon>
-              刷新
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="closeOtherTabs">
-            <v-list-item-title>
-              <v-icon small class="mr-2">mdi-close-box-multiple</v-icon>
-              关闭其他标签页
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="closeRightTabs">
-            <v-list-item-title>
-              <v-icon small class="mr-2">mdi-arrow-right-bold-box</v-icon>
-              关闭右侧标签页
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="closeAllTabs">
-            <v-list-item-title>
-              <v-icon small class="mr-2">mdi-close-box</v-icon>
-              关闭所有标签页
-            </v-list-item-title>
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-list-item @click="pinTab">
-            <v-list-item-title>
-              <v-icon small class="mr-2">mdi-pin</v-icon>
-              {{ currentContextTab?.pinned ? '取消固定' : '固定标签页' }}
-            </v-list-item-title>
-          </v-list-item>
-        </v-list>
+      <v-menu offset-y left min-width="260" transition="slide-y-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-on="on" v-bind="attrs">
+            <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+              <v-icon color="#f5f5f5">mdi-email-outline</v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-list dense class="pa-0">
+            <v-subheader>消息中心</v-subheader>
+            <v-divider />
+            <v-list-item>
+              <v-list-item-avatar></v-list-item-avatar>
+            </v-list-item>
+          </v-list>
+        </v-card>
       </v-menu>
-    </template>
-  </v-app-bar>
+      <v-menu offset-y left min-width="260" transition="slide-y-transition">
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+              <v-icon color="#f5f5f5">mdi-bell-outline</v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-list dense class="pa-0">
+            <v-subheader>系统通知</v-subheader>
+            <v-divider />
+            <v-list-item>
+              <v-list-item-avatar></v-list-item-avatar>
+            </v-list-item>
+          </v-list>
+        </v-card>
+      </v-menu>
+
+      <v-menu offset-y left bottom rounded transition="slide-y-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-on="on" v-bind="attrs">
+            <v-avatar light>
+              <v-icon color="#f5f5f5">mdi-account-circle</v-icon>
+            </v-avatar>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-list dense class="pa-0">
+            <v-subheader>用户</v-subheader>
+            <v-divider />
+            <v-list-item>
+              <v-list-item-avatar></v-list-item-avatar>
+            </v-list-item>
+          </v-list>
+        </v-card>
+      </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs show-arrows height="30" class="mx-1" optional prev-icon="mdi-cog">
+          <v-tabs-slider></v-tabs-slider>
+          <v-tab
+            append
+            tag="span"
+            active-class="tertiary"
+            v-for="(bookmark, index) in bookmarks"
+            :key="'bookmark_' + index"
+            :to="{ path: bookmark.fullPath }"
+            @contextmenu.prevent="openContextMenu($event)"
+          >
+            <span color="white">{{ bookmark.text }}</span>
+            <v-icon color="white" right small :disabled="bookmark.length === 1">mdi-close-box</v-icon>
+          </v-tab>
+        </v-tabs>
+
+        <!-- 右键菜单 -->
+        <v-menu v-model="showContextMenu" :position-x="menuX" :position-y="menuY" absolute offset-y content-class="chrome-context-menu">
+          <v-list dense>
+            <v-list-item @click="refreshTab">
+              <v-list-item-title>
+                <v-icon small class="mr-2">mdi-refresh</v-icon>
+                刷新
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="closeOtherTabs">
+              <v-list-item-title>
+                <v-icon small class="mr-2">mdi-close-box-multiple</v-icon>
+                关闭其他标签页
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="closeRightTabs">
+              <v-list-item-title>
+                <v-icon small class="mr-2">mdi-arrow-right-bold-box</v-icon>
+                关闭右侧标签页
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="closeAllTabs">
+              <v-list-item-title>
+                <v-icon small class="mr-2">mdi-close-box</v-icon>
+                关闭所有标签页
+              </v-list-item-title>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list-item @click="pinTab">
+              <v-list-item-title>
+                <v-icon small class="mr-2">mdi-pin</v-icon>
+                {{ currentContextTab?.pinned ? '取消固定' : '固定标签页' }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </template>
+    </v-app-bar>
+  </div>
 </template>
 
 <script>
