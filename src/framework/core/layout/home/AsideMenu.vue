@@ -33,7 +33,7 @@
                 <v-icon dense>mdi-view-dashboard</v-icon>
               </v-list-item-icon>
               <v-list-item-title :class="active ? 'text-white' : 'text-black'">
-                <span active-class="primary" class="text-subtitle-2">首页</span>
+                <span class="text-subtitle-2">首页</span>
               </v-list-item-title>
             </template>
           </v-list-item>
