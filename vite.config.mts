@@ -155,6 +155,8 @@ export default defineConfig(({ command }) => {
           'src/components/**', // all nested modules
           'src/views',
           'src/views/HomeView.vue',
+          'src/framework/core/layout/',
+          'src/framework/core/layout/**',
           'src/framework/core/layout/home',
           'src/framework/core/layout/home/**',
           'src/framework/core/layout/default',

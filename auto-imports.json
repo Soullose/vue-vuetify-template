@@ -484,6 +484,18 @@
   },
   {
     "name": "default",
+    "as": "DefaultLayout",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/DefaultLayout.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "home",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
     "as": "AsideMenu",
     "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/AsideMenu.vue",
     "__source": "dir"
@@ -498,12 +510,6 @@
     "name": "default",
     "as": "Header",
     "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/Header.vue",
-    "__source": "dir"
-  },
-  {
-    "name": "default",
-    "as": "home",
-    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/index.vue",
     "__source": "dir"
   }
 ]
