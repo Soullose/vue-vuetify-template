@@ -6,9 +6,9 @@
     </template> -->
       <v-app-bar-nav-icon color="primary" @click="toggleAsideMenuFolded" />
 
-      <!-- <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
+      <v-btn color="primary" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
         {{ menu.name }}
-      </v-btn> -->
+      </v-btn>
 
       <!-- <v-breadcrumbs :items="menus">
         <template v-slot:item="{ item }">
@@ -97,7 +97,7 @@
       </v-menu>
 
       <template v-slot:extension>
-        <v-tabs show-arrows height="30" class="mx-1" optional prev-icon="mdi-cog">
+        <v-tabs show-arrows height="30" background-color="#fff" active-class="primary" class="mx-1" optional prev-icon="mdi-cog">
           <v-tabs-slider></v-tabs-slider>
           <v-tab
             append
