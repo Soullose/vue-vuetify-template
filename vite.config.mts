@@ -28,7 +28,7 @@ Object.keys(mdicons).forEach((key) => {
 });
 
 export default defineConfig(({ command }) => {
-  console.log('command:', command);
+  // console.log('command:', command);
   return {
     plugins: [
       vue({
@@ -52,7 +52,7 @@ export default defineConfig(({ command }) => {
         exclude: ['**/components.{ts,tsx}'],
         extensions: ['vue', 'md', 'jsx'],
         extendRoute(route: any) {
-          console.log('route-:', route);
+          // console.log('route-:', route);
           // if (route.path === '/') {
           //   return {
           //     ...route,
