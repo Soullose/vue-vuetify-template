@@ -91,12 +91,6 @@
     "mapWritableState": true,
     "setActivePinia": true,
     "setMapStoreSuffix": true,
-    "storeToRefs": true,
-    "HomeLayout": true,
-    "src/framework/core/layout/home": true,
-    "Home": true,
-    "default": true,
-    "default ": true,
-    "HomeView": true
+    "storeToRefs": true
   }
 }
