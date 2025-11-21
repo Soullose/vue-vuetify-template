@@ -8,6 +8,7 @@ export {}
 declare global {
   const AsideMenu: typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']
   const BookMark: typeof import('./src/framework/core/layout/home/BookMark.vue')['default']
+  const DefaultLayout: typeof import('./src/framework/core/layout/DefaultLayout.vue')['default']
   const EffectScope: typeof import('vue')['EffectScope']
   const Header: typeof import('./src/framework/core/layout/home/Header.vue')['default']
   const HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -20,6 +21,7 @@ declare global {
   const createApp: typeof import('vue')['createApp']
   const createPinia: typeof import('pinia')['createPinia']
   const customRef: typeof import('vue')['customRef']
+  const defaultLayout: (typeof import('./src/framework/core/layout/DefaultLayout.vue'))['default']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
@@ -28,7 +30,7 @@ declare global {
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
-  const home: typeof import('./src/framework/core/layout/home/index.vue')['default']
+  const home: typeof import('./src/framework/core/layout/home.vue')['default']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
@@ -107,6 +109,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly AsideMenu: UnwrapRef<typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']>
     readonly BookMark: UnwrapRef<typeof import('./src/framework/core/layout/home/BookMark.vue')['default']>
+    readonly DefaultLayout: UnwrapRef<typeof import('./src/framework/core/layout/DefaultLayout.vue')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Header: UnwrapRef<typeof import('./src/framework/core/layout/home/Header.vue')['default']>
     readonly HelloWorld: UnwrapRef<typeof import('./src/components/HelloWorld.vue')['default']>
@@ -126,7 +129,7 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
-    readonly home: UnwrapRef<typeof import('./src/framework/core/layout/home/index.vue')['default']>
+    readonly home: UnwrapRef<typeof import('./src/framework/core/layout/home.vue')['default']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
