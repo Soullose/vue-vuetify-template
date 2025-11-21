@@ -21,8 +21,8 @@
     </v-tooltip>
 
     <v-menu offset-y left min-width="260" transition="slide-y-transition">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn icon v-on="on" v-bind="attrs">
+      <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
           <v-badge color="red" overlap dot bordered :content="messages.length">
             <v-icon>mdi-email-outline</v-icon>
           </v-badge>
@@ -38,6 +38,7 @@
         </v-list>
       </v-card>
     </v-menu>
+
     <v-menu offset-y left min-width="260" transition="slide-y-transition">
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on">
