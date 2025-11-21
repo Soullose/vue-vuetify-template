@@ -104,6 +104,7 @@
     "HelloWorld": true,
     "TestAggrid": true,
     "AsideMenu": true,
-    "Header": true
+    "Header": true,
+    "BookMark": true
   }
 }

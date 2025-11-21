@@ -7,6 +7,7 @@
 export {}
 declare global {
   const AsideMenu: typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']
+  const BookMark: typeof import('./src/framework/core/layout/home/BookMark.vue')['default']
   const EffectScope: typeof import('vue')['EffectScope']
   const Header: typeof import('./src/framework/core/layout/home/Header.vue')['default']
   const HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -105,6 +106,7 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly AsideMenu: UnwrapRef<typeof import('./src/framework/core/layout/home/AsideMenu.vue')['default']>
+    readonly BookMark: UnwrapRef<typeof import('./src/framework/core/layout/home/BookMark.vue')['default']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Header: UnwrapRef<typeof import('./src/framework/core/layout/home/Header.vue')['default']>
     readonly HelloWorld: UnwrapRef<typeof import('./src/components/HelloWorld.vue')['default']>
