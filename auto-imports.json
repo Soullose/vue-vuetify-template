@@ -459,18 +459,45 @@
     "as": "axios"
   },
   {
-    "from": "@/framework/core/layout/home",
-    "name": "HomeLayout",
-    "as": "HomeLayout"
+    "from": "vue-router",
+    "type": true,
+    "name": "RouteLocationRaw",
+    "as": "RouteLocationRaw"
   },
   {
-    "from": "@/views/HomeView.vue",
-    "name": "HomeView",
-    "as": "HomeView"
-  },
-  {
-    "from": "@/views/HomeView.vue",
     "name": "default",
-    "as": "HomeView"
+    "as": "HelloWorld",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/components/HelloWorld.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "TestAggrid",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/components/TestAggrid.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "HomeView",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/views/HomeView.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "AsideMenu",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/AsideMenu.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "Header",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/Header.vue",
+    "__source": "dir"
+  },
+  {
+    "name": "default",
+    "as": "home",
+    "from": "D:/Dev/4.NodeProject/vue-vuetify-template/src/framework/core/layout/home/index.vue",
+    "__source": "dir"
   }
 ]

@@ -2,6 +2,7 @@ import { setupLayouts } from 'virtual:generated-layouts';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import generatedRoutes from '~pages';
+
 Vue.use(VueRouter);
 // const routes = [
 //   {
@@ -71,19 +72,19 @@ Vue.use(VueRouter);
 //   }
 // ];
 
-// const root = {
-//   path: '/',
-//   redirect: '/home',
-//   name: 'home',
-//   component: HomeLayout,
-//   children: [
-//     {
-//       path: '/home',
-//       name: 'home',
-//       component: HomeView
-//     }
-//   ]
-// };
+const root = {
+  path: '/',
+  redirect: '/home',
+  name: 'all',
+  component: home,
+  children: [
+    {
+      path: '/home',
+      name: 'home',
+      component: HomeView
+    }
+  ]
+};
 /// 标题前缀
 const titlePrefix = 'W2-';
 
