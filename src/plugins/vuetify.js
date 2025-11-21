@@ -1,25 +1,7 @@
 import Vue from 'vue';
-// import type { VuetifyParsedTheme } from 'vuetify/types/services/theme'
-import Vuetify from 'vuetify/lib';
-import { Resize, Ripple, Scroll } from 'vuetify/lib/directives';
+import Vuetify from 'vuetify/lib/framework';
 import zhHans from 'vuetify/lib/locale/zh-Hans';
-
-const svgIcons = Object.fromEntries(
-  Object.entries(
-    import.meta.glob<Component>('@/assets/icons/*.svg', {
-      eager: true,
-      import: 'default',
-    }),
-  ).map(([k, v]) => [filename(k), { component: v }]),
-)
-
-Vue.use(Vuetify,{
-  directives: {
-    Ripple,
-    Resize,
-    Scroll
-  },
-});
+Vue.use(Vuetify);
 
 export default new Vuetify({
   lang: {
@@ -27,9 +9,6 @@ export default new Vuetify({
     current: 'zhHans'
   },
   icons: {
-    iconfont: 'mdiSvg',
-    values: {
-      ...svgIcons
-    }
+    iconfont: 'mdiSvg'
   }
 });
