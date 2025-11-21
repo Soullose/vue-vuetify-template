@@ -53,18 +53,29 @@ export const install: InstallPlugin = (vue) => {
       current: 'zhHans'
     },
     theme: {
-      // dark: useDark().value,
+      disable: false,
+      dark: false,
       themes: {
-        // light: {
-        //   primary: '#1976D2',
-        //   secondary: '#424242',
-        //   accent: '#82B1FF',
-        //   error: '#FF5252',
-        //   info: '#2196F3',
-        //   success: '#4CAF50',
-        //   warning: '#FFC107',
-        //   anchor: '#8c9eff'
-        // }
+        light: {
+          primary: '#1565C0',
+          secondary: '#50606F',
+          tertiary: '#48617B',
+          accent: '#9c27b0', // 强调色
+          error: '#BA1A1A', // 错误色
+          info: '#00bcd4', // 信息色
+          success: '#4caf50', // 成功色
+          warning: '#ff9800' // 警告色
+        },
+        dark: {
+          primary: '#A9C7FF',
+          secondary: '#B8C8D9',
+          tertiary: '#AFC9E7',
+          accent: '#9c27b0', // 强调色
+          error: '#FFB4AB', // 错误色
+          info: '#00bcd4', // 信息色
+          success: '#4caf50', // 成功色
+          warning: '#ff9800' // 警告色
+        }
       },
       options: {
         // themeCache: {
