@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import generatedRoutes from '~pages';
 import HomeView from '../views/HomeView.vue';
-console.log('generatedRoutes:', generatedRoutes);
+
 Vue.use(VueRouter);
 
 const routes = [
