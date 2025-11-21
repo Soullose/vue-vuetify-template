@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="fill-height" flex-auto flex flex-col min-h-vh max-w-full backface-hidden position-relative pa-0 ma-0 float-right box-inherit>
     <header />
 
@@ -27,4 +27,4 @@ export default {
 <style lang="scss">
 // $footer-border-radius: 10 !default;
 // $footer-elevation: 0 !default;
-</style> -->
+</style>
