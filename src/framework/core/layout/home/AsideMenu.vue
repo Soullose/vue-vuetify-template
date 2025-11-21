@@ -11,7 +11,7 @@
               <label class="text-blank text-subtitle-1 font-weight-regular mr-2">
                 {{ software.name }}
               </label>
-              <label class="mr-3 text-caption">
+              <label class="mr-3 text-caption black--text">
                 {{ software.version }}
               </label>
             </v-list-item-title>
@@ -28,14 +28,12 @@
         <!-- <ac-aside-menu /> -->
         <v-list dense nav>
           <v-list-item active-class="primary" to="/dashboard">
-            <template v-slot="{ active, toggle }">
-              <v-list-item-icon :class="active ? 'text-white' : 'text-black'" class="justify-center">
-                <v-icon dense>mdi-view-dashboard</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title :class="active ? 'text-white' : 'text-black'">
-                <span active-class="primary" class="text-subtitle-2">首页</span>
-              </v-list-item-title>
-            </template>
+            <v-list-item-icon class="justify-center">
+              <v-icon dense>mdi-view-dashboard</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>
+              <span class="text-subtitle-2">首页</span>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item ctive-class="primary" to="/test11">
@@ -51,8 +49,8 @@
             <v-list-item-icon text-blue class="justify-center">
               <v-icon dense>mdi-account-box</v-icon>
             </v-list-item-icon>
-            <v-list-item-title text-blue>
-              <span class="text-subtitle-2">测试22</span>
+            <v-list-item-title>
+              <span text-blue class="text-subtitle-2">测试22</span>
             </v-list-item-title>
           </v-list-item>
 
