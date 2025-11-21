@@ -6,9 +6,18 @@
     </template> -->
       <v-app-bar-nav-icon color="#f5f5f5" @click="toggleAsideMenuFolded" />
 
-      <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
+      <!-- <v-btn color="#f5f5f5" text rounded v-for="menu in menus" :key="menu.id" link :to="{ path: menu.path }" plain active-class="active-menu">
         {{ menu.name }}
-      </v-btn>
+      </v-btn> -->
+
+      <!-- <v-breadcrumbs :items="menus">
+        <template v-slot:item="{ item }">
+          <v-breadcrumbs-item color="white" :to="item.path" :disabled="item.disabled">
+            {{ item.name.toUpperCase() }}
+          </v-breadcrumbs-item>
+        </template>
+      </v-breadcrumbs> -->
+
       <v-spacer></v-spacer>
 
       <v-tooltip bottom>
@@ -156,12 +165,14 @@ export default {
       {
         id: 1,
         name: 'Home',
-        path: '/'
+        path: '/home',
+        disabled: false
       },
       {
         id: 2,
         name: 'About',
-        path: '/about'
+        path: '/about',
+        disabled: false
       }
     ],
     // showSearch: false,
