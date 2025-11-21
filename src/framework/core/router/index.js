@@ -1,79 +1,80 @@
+import { setupLayouts } from 'virtual:generated-layouts';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../../../views/HomeView.vue';
-import HomeLayout from '../layout/home';
-
-import notfound from '@/framework/views/404/notfound.vue';
+import generatedRoutes from '~pages';
+export const routes = setupLayouts(generatedRoutes);
+console.log('routes:', routes);
+console.log('generatedRoutes:', generatedRoutes);
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    redirect: '/home',
-    name: 'home',
-    component: HomeLayout,
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: HomeView
-      }
-    ]
-  },
-  {
-    path: '/',
-    redirect: '/testAggrid',
-    name: 'home',
-    component: HomeLayout,
-    children: [
-      {
-        // 当 /testAggrid 匹配成功，
-        // TestAggrid 会被渲染在 HomeLayout 的 <router-view> 中
-        path: 'testAggrid',
-        name: 'testAggrid',
-        component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue'),
-        meta: {
-          title: 'testAggrid'
-        }
-      }
-    ]
-  },
-  {
-    path: '/',
-    redirect: '/404',
-    name: 'notfound',
-    component: HomeLayout,
-    children: [
-      {
-        path: '*',
-        name: 'notfound',
-        component: notfound
-      }
-    ]
-  },
-  {
-    path: '/testAggrid',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue')
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../../../views/AboutView.vue')
-  },
-  {
-    path: '*',
-    name: 'notfound',
-    component: notfound
-  }
-];
+// const routes = [
+//   {
+//     path: '/',
+//     redirect: '/home',
+//     name: 'home',
+//     component: HomeLayout,
+//     children: [
+//       {
+//         path: '/home',
+//         name: 'home',
+//         component: HomeView
+//       }
+//     ]
+//   },
+//   {
+//     path: '/',
+//     redirect: '/testAggrid',
+//     name: 'home',
+//     component: HomeLayout,
+//     children: [
+//       {
+//         // 当 /testAggrid 匹配成功，
+//         // TestAggrid 会被渲染在 HomeLayout 的 <router-view> 中
+//         path: 'testAggrid',
+//         name: 'testAggrid',
+//         component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue'),
+//         meta: {
+//           title: 'testAggrid'
+//         }
+//       }
+//     ]
+//   },
+//   {
+//     path: '/',
+//     redirect: '/404',
+//     name: 'notfound',
+//     component: HomeLayout,
+//     children: [
+//       {
+//         path: '*',
+//         name: 'notfound',
+//         component: notfound
+//       }
+//     ]
+//   },
+//   {
+//     path: '/testAggrid',
+//     name: 'about',
+//     // route level code-splitting
+//     // this generates a separate chunk (about.[hash].js) for this route
+//     // which is lazy-loaded when the route is visited.
+//     component: () => import(/* webpackChunkName: "about" */ '../../../components/TestAggrid.vue')
+//   },
+//   {
+//     path: '/about',
+//     name: 'about',
+//     // route level code-splitting
+//     // this generates a separate chunk (about.[hash].js) for this route
+//     // which is lazy-loaded when the route is visited.
+//     component: () => import(/* webpackChunkName: "about" */ '../../../views/AboutView.vue')
+//   },
+//   {
+//     path: '*',
+//     name: 'notfound',
+//     component: notfound
+//   }
+// ];
 
 const router = new VueRouter({
   mode: 'history',
