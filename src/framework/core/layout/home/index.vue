@@ -11,7 +11,6 @@
         {{ menu.name }}
       </v-btn>
       <v-spacer></v-spacer>
-
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon @click="onToggleScreenfull" v-on="on" v-bind="attrs">
@@ -24,7 +23,7 @@
       <v-menu offset-y left min-width="260" transition="slide-y-transition">
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on">
-            <v-badge color="red" overlap dot bordered :content="messages.length">
+            <v-badge color="red" light overlap dot bordered :content="messages.length">
               <v-icon>mdi-email-outline</v-icon>
             </v-badge>
           </v-btn>
@@ -63,7 +62,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-on="on" v-bind="attrs">
             <v-avatar light>
-              <v-icon>mdi-account-circle</v-icon>
+              <v-icon dark>mdi-account-circle</v-icon>
             </v-avatar>
           </v-btn>
         </template>
@@ -79,8 +78,8 @@
       </v-menu>
 
       <template v-slot:extension>
-        <v-tabs height="30" optional class="mx-4" active-class="active-bookmark">
-          <v-tabs-slider></v-tabs-slider>
+        <v-tabs height="30" optional background-color="transparent" class="mx-4" active-class="active-bookmark">
+          <v-tabs-slider color="primary"></v-tabs-slider>
           <v-tab v-for="(bookmark, index) in bookmarks" :key="'bookmark_' + index" :to="{ path: bookmark.fullPath }">
             {{ bookmark.text }}
             <v-icon right small :disabled="bookmarks.length === 1">mdi-bookmark-remove</v-icon>
@@ -182,11 +181,11 @@
       </v-layout>
     </v-navigation-drawer>
 
-    <v-main class="">
+    <v-main class="grey lighten-3">
       <router-view />
     </v-main>
 
-    <v-footer inset app color="white" elevation="12" style="height: 48px">
+    <v-footer inset app light elevation="12" style="height: 48px">
       <v-spacer />
       <span class="text-body-2 mr-2">版权所有</span>
       <span class="text-body-2">{{ software.company }}</span>
