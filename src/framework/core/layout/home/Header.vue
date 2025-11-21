@@ -171,25 +171,10 @@ export default {
     ],
     //当前在用的ITEM下标
     activeIndex: 0,
-    // defaultItems: [],
     showOperation: false,
     showOperationItem: null,
     x: 0,
     y: 0,
-    // operation: [
-    //   {
-    //     text: '关闭本页',
-    //     type: 1
-    //   },
-    //   {
-    //     text: '关闭其他页',
-    //     type: 2
-    //   },
-    //   {
-    //     text: '关闭所有页',
-    //     type: 3
-    //   }
-    // ],
     activeTab: 'home',
     showContextMenu: false,
     menuX: 0,
