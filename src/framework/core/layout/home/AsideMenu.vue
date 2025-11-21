@@ -45,7 +45,7 @@
             </v-list-item-title>
           </v-list-item>
 
-          <v-list-item ctive-class="primary" to="/test11">
+          <v-list-item ctive-class="primary" to="/test22">
             <v-list-item-icon text-blue class="justify-center">
               <v-icon dense>mdi-account-box</v-icon>
             </v-list-item-icon>
