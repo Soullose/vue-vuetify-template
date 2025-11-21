@@ -4,8 +4,10 @@
 
     <aside-menu />
 
-    <v-main class="">
-      <router-view />
+    <v-main flex>
+      <v-scroll-x-transition mode="out-in">
+        <router-view />
+      </v-scroll-x-transition>
     </v-main>
     <footer />
   </div>

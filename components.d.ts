@@ -46,6 +46,7 @@ declare module 'vue' {
     VMenu: typeof import('vuetify/lib')['VMenu']
     VNavigationDrawer: typeof import('vuetify/lib')['VNavigationDrawer']
     VRow: typeof import('vuetify/lib')['VRow']
+    VScrollXTransition: typeof import('vuetify/lib')['VScrollXTransition']
     VSheet: typeof import('vuetify/lib')['VSheet']
     VSpacer: typeof import('vuetify/lib')['VSpacer']
     VSubheader: typeof import('vuetify/lib')['VSubheader']
