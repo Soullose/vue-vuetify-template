@@ -1,5 +1,5 @@
 <template>
-  <div class="fill-height" flex-auto flex flex-col min-h-vh max-w-full backface-hidden position-relative pa-0 ma-0 float-right box-inherit>
+  <div class="fill-height d-flex">
     <header />
 
     <aside-menu />
