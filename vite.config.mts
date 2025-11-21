@@ -2,7 +2,6 @@ import * as mdicons from '@mdi/js';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue2';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
-import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 import postcssPresetEnv from 'postcss-preset-env';
 import regexpPlugin from 'rollup-plugin-regexp';
@@ -34,13 +33,21 @@ export default defineConfig({
     Pages({
       dirs: [
         // issue #68
-        { dir: resolve(__dirname, './src/views'), baseRoute: '' },
+        { dir: fileURLToPath(new URL('./src/views', import.meta.url)), baseRoute: '' },
         // 案例
-        { dir: 'src/features/**/pages', baseRoute: 'features' },
-        { dir: 'src/admin/pages', baseRoute: 'admin' }
+        { dir: fileURLToPath(new URL('src/features/**/pages', import.meta.url)), baseRoute: 'features' },
+        { dir: fileURLToPath(new URL('src/admin/pages', import.meta.url)), baseRoute: 'admin' }
       ],
+      exclude: ['**/components.{ts,tsx}'],
       extensions: ['vue', 'md', 'jsx'],
       extendRoute(route: any) {
+        console.log('route:', route);
+        if (route.path === '/') {
+          return {
+            ...route,
+            redirect: '/home'
+          };
+        }
         if (route.name === 'about') route.props = (route: any) => ({ query: route.query.q });
 
         if (route.name === 'components') {
@@ -58,6 +65,7 @@ export default defineConfig({
     Inspect(),
     compression(),
     Components({
+      dirs: ['src/components', 'src/framework/core/layout/home'],
       // generate `components.d.ts` global declarations
       dts: true,
       // auto import for directives
@@ -89,7 +97,6 @@ export default defineConfig({
       sourcemap: false
     }),
     AutoImport({
-      // targets to transform
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
         /\.vue$/,
@@ -97,7 +104,6 @@ export default defineConfig({
         /\.vue\.[tj]sx?\?vue/, // .vue (vue-loader with experimentalInlineMatchResource enabled)
         /\.md$/ // .md
       ],
-      // global imports to register
       imports: [
         // presets
         'vue',
@@ -121,13 +127,16 @@ export default defineConfig({
           from: 'vue-router',
           imports: ['RouteLocationRaw'],
           type: true
+        },
+        {
+          '@/framework/core/layout/home': ['HomeLayout', ['default', 'HomeLayout']],
+          '@/views/HomeView.vue': ['HomeView', ['default', 'HomeView']]
         }
       ],
       // Array of strings of regexes that contains imports meant to be filtered out.
       ignore: ['useMouse', 'useFetch'],
       // Enable auto import by filename for default module exports under directories
       defaultExportByFilename: false,
-
       // Options for scanning directories for auto import
       dirsScanOptions: {
         types: true // Enable auto import the types under the directories
@@ -135,9 +144,13 @@ export default defineConfig({
       // Auto import for module exports under directories
       // by default it only scan one level of modules under the directory
       dirs: [
-        './hooks',
-        './composables', // only root modules
-        './composables/**', // all nested modules
+        'src/composables', // only root modules
+        'src/composables/**', // all nested modules
+        'src/views',
+        {
+          glob: 'src/framework/core/layout/home',
+          types: false
+        },
         // ...
         {
           glob: './hooks',
