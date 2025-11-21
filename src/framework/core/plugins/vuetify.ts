@@ -31,6 +31,15 @@ const theme = {
   info: '#00CAE3'
 };
 
+const light = {
+  primary: '#000',
+  secondary: '#FFD65E',
+  accent: '#EDAFB8',
+  error: '#FF5252',
+  info: '#2196F3',
+  success: '#4CAF50',
+  warning: '#FFC107'
+};
 export const install: InstallPlugin = (vue) => {
   vue.use(Vuetify, {
     directives: {
@@ -47,8 +56,16 @@ export const install: InstallPlugin = (vue) => {
     theme: {
       dark: useDark().value,
       themes: {
-        dark: theme,
-        light: theme
+        light: {
+          primary: '#1976D2',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+          anchor: '#8c9eff'
+        }
       },
       options: {
         themeCache: {
