@@ -1,6 +1,7 @@
 import type { InstallPlugin } from '@/framework/utils/types';
 import { useDark } from '@vueuse/core';
 import type { Component } from 'vue';
+import 'vuetify/dist/vuetify.min.css';
 import Vuetify from 'vuetify/lib';
 import { Resize, Ripple, Scroll } from 'vuetify/lib/directives';
 import en from 'vuetify/lib/locale/en';
@@ -24,8 +25,8 @@ const svgIcons = Object.fromEntries(
 );
 
 const theme = {
-  primary: localStorage.getItem('theme-primary') || '#3f51b5',
-  secondary: '#03A9F4',
+  primary: '#388FFF', // 2A87FF
+  secondary: '#2A87FF',
   accent: '#9C27b0',
   info: '#00CAE3'
 };

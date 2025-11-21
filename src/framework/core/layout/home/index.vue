@@ -1,6 +1,6 @@
 <template>
   <div class="fill-height d-flex">
-    <v-app-bar app elevation="4" light fixed flat extension-height="32" height="32">
+    <v-app-bar app elevation="4" fixed flat extension-height="32" height="32">
       <template v-slot:img="{ props }">
         <!-- <v-img v-bind="props" gradient="135deg, rgba(18, 52, 126, 0.6) 60%, rgba(255, 0, 0, 0.3)" /> -->
         <v-img v-bind="props" />
@@ -89,7 +89,7 @@
       </template>
     </v-app-bar>
 
-    <v-navigation-drawer app light fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
+    <v-navigation-drawer app fixed width="240" :miniVariant="asideMenuFolded" :expandOnHover="asideMenuFolded">
       <v-layout fill-height column>
         <v-list class="ml-2 py-0" two-line>
           <v-list-item class="px-0">
