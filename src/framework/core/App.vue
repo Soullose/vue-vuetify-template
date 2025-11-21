@@ -3,11 +3,9 @@
     <router-view />
   </div> -->
   <v-app>
-    <v-scroll-x-transition mode="out-in">
-      <!-- <v-main> -->
-      <router-view />
-      <!-- </v-main> -->
-    </v-scroll-x-transition>
+    <!-- <v-main> -->
+    <router-view />
+    <!-- </v-main> -->
   </v-app>
 </template>
 
