@@ -105,7 +105,6 @@
     "TestAggrid": true,
     "AsideMenu": true,
     "Header": true,
-    "BookMark": true,
-    "DefaultLayout": true
+    "BookMark": true
   }
 }
