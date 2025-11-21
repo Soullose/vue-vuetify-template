@@ -161,17 +161,26 @@
 
         <div class="grow overflow-y-auto" style="height: 0px">
           <!-- <ac-aside-menu /> -->
-          <v-list dense light nav>
-            <v-list-item light active-class="primary--text" to="/test11">
+          <v-list dense nav>
+            <v-list-item active-class="primary" color="white" to="/dashboard">
+              <v-list-item-icon class="justify-center">
+                <v-icon dense>mdi-view-dashboard</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>
+                <span color="white" class="text-subtitle-2">首页</span>
+              </v-list-item-title>
+            </v-list-item>
+
+            <v-list-item ctive-class="primary" color="white" to="/test11">
               <v-list-item-icon class="justify-center">
                 <v-icon dense>mdi-account-box</v-icon>
               </v-list-item-icon>
               <v-list-item-title>
-                <span class="text-subtitle-2">测试11</span>
+                <span color="white" class="text-subtitle-2">测试11</span>
               </v-list-item-title>
             </v-list-item>
 
-            <v-list-item light active-class="primary--text" to="/test11">
+            <v-list-item ctive-class="primary" color="white" to="/test11">
               <v-list-item-icon class="justify-center">
                 <v-icon dense>mdi-account-box</v-icon>
               </v-list-item-icon>
@@ -190,30 +199,30 @@
                 </v-list-item-title>
               </template>
 
-              <v-list-item active-class="primary--text" to="/home">
+              <v-list-item style="color: #187bf9; background-color: #eaf3ff" active-class="" color="blue-grey darken-3" to="/home">
                 <v-list-item-icon class="justify-center">
                   <v-icon dense>mdi-account-box</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <span class="text-subtitle-2">测试1</span>
+                  <span color="black" class="text-subtitle-2">测试1</span>
                 </v-list-item-title>
               </v-list-item>
 
-              <v-list-item active-class="primary--text" to="/home">
+              <v-list-item active-class="primary" color="white" to="/home">
                 <v-list-item-icon class="justify-center">
-                  <v-icon dense>mdi-account-box</v-icon>
+                  <v-icon color="primary" dense>mdi-account-box</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <span class="text-subtitle-2">测试2</span>
+                  <span color="white" class="text-subtitle-2">测试2</span>
                 </v-list-item-title>
               </v-list-item>
 
-              <v-list-item active-class="primary--text" to="/home">
+              <v-list-item active-class="primary" color="white" to="/home">
                 <v-list-item-icon class="justify-center">
                   <v-icon dense>mdi-account-box</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>
-                  <span class="text-subtitle-2">测试3</span>
+                  <span color="white" class="text-subtitle-2">测试3</span>
                 </v-list-item-title>
               </v-list-item>
             </v-list-group>
