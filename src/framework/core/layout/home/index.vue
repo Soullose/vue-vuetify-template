@@ -201,9 +201,9 @@ export default {
   created() {
     theme().setTheme('dark');
     console.log(theme().theme);
-    console.log(theme().getAsideMenuFolded);
   },
   data: () => ({
+    asideMenuFolded: false,
     menus: [
       {
         id: 1,
@@ -243,15 +243,11 @@ export default {
     ]
   }),
 
-  computed: {
-    asideMenuFolded() {
-      return theme().getAsideMenuFolded;
-    }
-  },
-
   methods: {
+    ...mapActions('theme', ['getAsideMenuFolded', 'setAsideMenuFolded']),
     toggleAsideMenuFolded() {
-      theme().setAsideMenuFolded(!theme().getAsideMenuFolded);
+      this.asideMenuFolded = !this.asideMenuFolded;
+      console.log('toggleAsideMenuFolded', this.asideMenuFolded);
     },
     onToggleScreenfull() {
       if (screenfull.isEnabled) {

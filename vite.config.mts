@@ -64,6 +64,25 @@ export default defineConfig({
     legacy(),
     Inspect(),
     compression(),
+    Components({
+      dirs: ['src/components', 'src/framework/core/layout/home'],
+      // generate `components.d.ts` global declarations
+      dts: true,
+      // auto import for directives
+      directives: true,
+      // resolvers for custom components
+      resolvers: [
+        // {
+        //   type: 'component',
+        //   resolve: (name: string) => {
+        //     const blackList = ['VChart', 'VHeadCard'];
+        //     if (name.match(/^V[A-Z]/) && !blackList.includes(name)) return { name, from: 'vuetify/lib' };
+        //   }
+        // },
+        // Vuetify
+        VuetifyResolver()
+      ]
+    }),
     regexpPlugin({
       exclude: ['node_modules/**', 'node_modules/@mdi\/js\/.+', 'node_modules\/vuetify\/.+'],
       find: /\b(?<![/\w])(mdi-[\w-]+)\b(?!\.)/,
@@ -77,18 +96,6 @@ export default defineConfig({
       },
       sourcemap: false
     }),
-    Components({
-      dirs: ['src/components', 'src/framework/core/layout'],
-      // generate `components.d.ts` global declarations
-      dts: true,
-      // auto import for directives
-      directives: true,
-      // resolvers for custom components
-      resolvers: [
-        // Vuetify
-        VuetifyResolver()
-      ]
-    }),
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -98,6 +105,7 @@ export default defineConfig({
         /\.md$/ // .md
       ],
       imports: [
+        // presets
         'vue',
         'vue-router',
         'pinia',
@@ -121,8 +129,8 @@ export default defineConfig({
           type: true
         },
         {
-          // '@/framework/core/layout/home/index.vue': ['HomeLayout', ['default', 'HomeLayout']],
-          // '@/views/HomeView.vue': ['HomeView', ['default', 'HomeView']]
+          '@/framework/core/layout/home': ['HomeLayout', ['default', 'HomeLayout']],
+          '@/views/HomeView.vue': ['HomeView', ['default', 'HomeView']]
         }
       ],
       // Array of strings of regexes that contains imports meant to be filtered out.
@@ -136,14 +144,13 @@ export default defineConfig({
       // Auto import for module exports under directories
       // by default it only scan one level of modules under the directory
       dirs: [
-        'src/components', // only root modules
-        'src/components/**', // all nested modules
+        'src/composables', // only root modules
+        'src/composables/**', // all nested modules
         'src/views',
-        'src/views/HomeView.vue',
-        'src/framework/core/layout/home',
-        'src/framework/core/layout/home/**',
-        'src/framework/core/layout/default',
-        // 'src/framework/core/layout/default/**',
+        {
+          glob: 'src/framework/core/layout/home',
+          types: false
+        },
         // ...
         {
           glob: './hooks',
