@@ -135,7 +135,7 @@
               </v-list-item-title>
             </v-list-item>
 
-            <v-list-group active-class="primary--text" append-icon="mdi-chevron-down mdi-18px">
+            <v-list-group active-class="primary--text" append-icon="mdi-chevron-down">
               <template v-slot:prependIcon>
                 <v-icon>mdi-view-dashboard</v-icon>
               </template>
