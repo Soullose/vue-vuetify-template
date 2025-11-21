@@ -1,11 +1,12 @@
 {
   "name": "vue-vuetify-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "^31.3.4",
@@ -17,7 +18,6 @@
     "ag-grid-community": "31.3.4",
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",
-    "markdown-loader": "^8.0.0",
     "pinia": "^2.3.1",
     "screenfull": "^5.2.0",
     "vue": "^2.7.16",
@@ -26,34 +26,17 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.21.0",
-    "@babel/preset-env": "^7.21.0",
     "@babel/types": "^7.21.0",
     "@mdi/js": "^7.4.47",
-    "@unocss/webpack": "^0.62.4",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "babel-plugin-lodash": "^3.3.4",
-    "compression-webpack-plugin": "^11.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "lodash-webpack-plugin": "^0.11.6",
-    "prettier": "^2.4.1",
+    "@vitejs/plugin-vue2": "^2.3.3",
+    "browserslist": "^4.24.4",
+    "browserslist-to-esbuild": "^2.1.1",
+    "prettier": "^3.5.3",
+    "rollup-plugin-regexp": "^5.0.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "speed-measure-webpack-plugin": "^1.5.0",
-    "thread-loader": "^4.0.4",
-    "unocss": "^0.62.4",
-    "vue-cli-plugin-vuetify": "~2.5.8",
-    "vue-template-compiler": "^2.7.16",
-    "vuetify-loader": "^1.9.2",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^5.4.15",
+    "vue-template-compiler": "^2.7.16"
   }
 }
