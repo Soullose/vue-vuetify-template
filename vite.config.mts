@@ -75,7 +75,7 @@ export default defineConfig(({ command }) => {
           }
         }
       }),
-      Layouts({ layoutsDirs: 'src/framework/core/layout/home', defaultLayout: 'index' }),
+      Layouts({ layoutsDirs: 'src/framework/core/layout', defaultLayout: 'home' }),
       legacy(),
       Inspect(),
       compression(),
