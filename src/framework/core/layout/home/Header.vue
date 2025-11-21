@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div bg-light-primary color-light-primary>
     <v-app-bar color="primary" app absolute elevation="4" fixed flat extension-height="32" height="32">
       <!-- <template v-slot:img="{ props }">
       <v-img v-bind="props" gradient="135deg, rgba(29, 125, 234, 100) 100%, rgba(21, 118, 247, 100)" />
@@ -21,17 +21,12 @@
       </v-tooltip>
 
       <v-menu offset-y left min-width="260" transition="slide-y-transition">
-        <template v-slot:activator="{ on: menu, attrs }">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on: tooltip }">
-              <v-btn icon v-on="{ ...menu, ...tooltip }" v-bind="attrs">
-                <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
-                  <v-icon color="#f5f5f5">mdi-email-outline</v-icon>
-                </v-badge>
-              </v-btn>
-            </template>
-            <span>消息中心</span>
-          </v-tooltip>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-on="on" v-bind="attrs">
+            <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+              <v-icon color="#f5f5f5">mdi-email-outline</v-icon>
+            </v-badge>
+          </v-btn>
         </template>
         <v-card>
           <v-list dense class="pa-0">
@@ -43,19 +38,13 @@
           </v-list>
         </v-card>
       </v-menu>
-
       <v-menu offset-y left min-width="260" transition="slide-y-transition">
-        <template v-slot:activator="{ on: menu, attrs }">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on: tooltip }">
-              <v-btn icon v-bind="attrs" v-on="{ ...tooltip, ...menu }">
-                <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
-                  <v-icon color="#f5f5f5">mdi-bell-outline</v-icon>
-                </v-badge>
-              </v-btn>
-            </template>
-            <span>系统通知</span>
-          </v-tooltip>
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-badge color="red darken-3" overlap dot bordered :content="messages.length">
+              <v-icon color="#f5f5f5">mdi-bell-outline</v-icon>
+            </v-badge>
+          </v-btn>
         </template>
         <v-card>
           <v-list dense class="pa-0">
