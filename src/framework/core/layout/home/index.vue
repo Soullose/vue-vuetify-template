@@ -253,7 +253,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-// $footer-border-radius: 10 !default;
-// $footer-elevation: 0 !default;
-</style>

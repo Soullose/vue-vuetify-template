@@ -1,4 +1,3 @@
-import '@/assets/styles/index.scss';
 import { createPinia, PiniaVuePlugin } from 'pinia';
 import Vue from 'vue';
 import '../components';
