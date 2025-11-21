@@ -11,6 +11,7 @@ declare module 'vue' {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RouterWrapper: typeof import('./src/components/layouts/RouterWrapper.vue')['default']
     TestAggrid: typeof import('./src/components/TestAggrid.vue')['default']
     VApp: typeof import('vuetify/lib')['VApp']
     VAppBar: typeof import('vuetify/lib')['VAppBar']

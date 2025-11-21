@@ -1,8 +1,8 @@
 import * as mdicons from '@mdi/js';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue2';
+import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { resolve } from 'node:path';
-// import browserslistToEsbuild from 'browserslist-to-esbuild';
 import { fileURLToPath, URL } from 'node:url';
 import postcssPresetEnv from 'postcss-preset-env';
 import regexpPlugin from 'rollup-plugin-regexp';
@@ -64,6 +64,13 @@ export default defineConfig({
       directives: true,
       // resolvers for custom components
       resolvers: [
+        // {
+        //   type: 'component',
+        //   resolve: (name: string) => {
+        //     const blackList = ['VChart', 'VHeadCard'];
+        //     if (name.match(/^V[A-Z]/) && !blackList.includes(name)) return { name, from: 'vuetify/lib' };
+        //   }
+        // },
         // Vuetify
         VuetifyResolver()
       ]
@@ -95,6 +102,7 @@ export default defineConfig({
         // presets
         'vue',
         'vue-router',
+        'pinia',
         // custom
         {
           '@vueuse/core': [
@@ -185,11 +193,11 @@ export default defineConfig({
     // https://vitejs.dev/config/#css-preprocessoroptions
     preprocessorOptions: {
       sass: {
-        // additionalData: [
-        //   // vuetify variable overrides
-        //   '@import "@/assets/styles/vuetify-variables.scss"',
-        //   ''
-        // ].join('\n')
+        additionalData: [
+          // vuetify variable overrides
+          '@import "@/assets/styles/variables.scss"',
+          ''
+        ].join('\n')
       }
     },
     postcss: {
@@ -205,7 +213,7 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    // port: 3000,
+    port: 3000,
     watch: {
       usePolling: true
     },
@@ -216,7 +224,7 @@ export default defineConfig({
   },
   /// 构建选项
   build: {
-    // target: browserslistToEsbuild(),
+    target: browserslistToEsbuild(),
     reportCompressedSize: true,
     rollupOptions: {
       output: {

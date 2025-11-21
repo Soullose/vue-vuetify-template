@@ -389,6 +389,66 @@
     "as": "onBeforeRouteUpdate"
   },
   {
+    "from": "pinia",
+    "name": "acceptHMRUpdate",
+    "as": "acceptHMRUpdate"
+  },
+  {
+    "from": "pinia",
+    "name": "createPinia",
+    "as": "createPinia"
+  },
+  {
+    "from": "pinia",
+    "name": "defineStore",
+    "as": "defineStore"
+  },
+  {
+    "from": "pinia",
+    "name": "getActivePinia",
+    "as": "getActivePinia"
+  },
+  {
+    "from": "pinia",
+    "name": "mapActions",
+    "as": "mapActions"
+  },
+  {
+    "from": "pinia",
+    "name": "mapGetters",
+    "as": "mapGetters"
+  },
+  {
+    "from": "pinia",
+    "name": "mapState",
+    "as": "mapState"
+  },
+  {
+    "from": "pinia",
+    "name": "mapStores",
+    "as": "mapStores"
+  },
+  {
+    "from": "pinia",
+    "name": "mapWritableState",
+    "as": "mapWritableState"
+  },
+  {
+    "from": "pinia",
+    "name": "setActivePinia",
+    "as": "setActivePinia"
+  },
+  {
+    "from": "pinia",
+    "name": "setMapStoreSuffix",
+    "as": "setMapStoreSuffix"
+  },
+  {
+    "from": "pinia",
+    "name": "storeToRefs",
+    "as": "storeToRefs"
+  },
+  {
     "from": "@vueuse/core",
     "name": "useFetch",
     "as": "useMyFetch"
